@@ -166,6 +166,15 @@ function handleChatApi(req, res) {
         max_tokens: 600
       };
 
+
+
+
+
+
+
+
+
+
       const openaiRes = await fetch('https://api.openai.com/v1/chat/completions', {
         method: 'POST',
         headers: {
