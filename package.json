@@ -1,0 +1,13 @@
+{
+  "name": "catrine-website",
+  "version": "1.0.0",
+  "description": "Сайт CATRINE — мебель на заказ в Астане",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

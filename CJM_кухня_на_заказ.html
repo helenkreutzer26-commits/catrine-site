@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CJM: кухня на заказ</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,500;7..72,700&family=Onest:wght@400;500;600&display=swap">
+<style>
+:root{
+  --bg:#eef1ef; --surface:#ffffff; --line:#d3dad6; --fg:#1d2422; --muted:#5d6a65;
+  --oak:#a8692f; --oak-soft:#f3e6d8; --sage:#4f7a68; --sage-soft:#e0ece6;
+  --p1:#b2452f; --p1-soft:#f6e1dc; --p2:#7a5aa8; --p2-soft:#ece5f5; --p3:#2f6f9e; --p3-soft:#dfeaf4;
+  --display:"Literata", Georgia, serif; --body:"Onest", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark){:root{
+  --bg:#151a19; --surface:#1e2524; --line:#33403c; --fg:#e7ece9; --muted:#9aa8a2;
+  --oak:#d89a5c; --oak-soft:#3a2a1b; --sage:#7fb39c; --sage-soft:#1f3229;
+  --p1:#e98a74; --p1-soft:#3d221c; --p2:#b49ae0; --p2-soft:#2c2340; --p3:#7fb2dc; --p3-soft:#1b2b3a; color-scheme:dark}}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.5}
+.wrap{max-width:1180px;margin:0 auto;padding:32px 16px 64px;display:grid;gap:40px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;font-weight:700}
+h1{font-size:clamp(28px,4vw,40px);line-height:1.15}
+h2{font-size:24px}
+h3{font-size:16px;font-family:var(--body);font-weight:600}
+p{margin:0}
+.eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--oak);font-weight:600}
+.lead{color:var(--muted);max-width:65ch}
+header{display:grid;gap:12px}
+.persona{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.box{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 18px;display:grid;gap:8px;align-content:start;min-width:0}
+.box dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:14px}
+.box dt{color:var(--muted)} .box dd{margin:0}
+.pain{border-left:4px solid var(--c);}
+.pain .tag{color:var(--c);font-weight:600;font-size:13px}
+.pain p{font-size:14px}
+.p1{--c:var(--p1);--cs:var(--p1-soft)} .p2{--c:var(--p2);--cs:var(--p2-soft)} .p3{--c:var(--p3);--cs:var(--p3-soft)}
+section{display:grid;gap:16px}
+.scroller{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+table{border-collapse:collapse;min-width:1700px;width:100%;font-size:13.5px}
+th,td{border-bottom:1px solid var(--line);border-right:1px solid var(--line);padding:10px 12px;vertical-align:top;text-align:left}
+thead th{background:var(--sage-soft);font-weight:600}
+thead th .n{display:block;font-size:11px;color:var(--sage);letter-spacing:.06em;text-transform:uppercase}
+tbody th{position:sticky;left:0;background:var(--surface);width:150px;min-width:150px;font-weight:600;color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.05em;z-index:1}
+td ul{margin:0;padding-left:16px;display:grid;gap:4px}
+td.q{font-style:italic;color:var(--muted)}
+.chip{display:inline-block;font-size:12px;font-weight:600;padding:2px 8px;border-radius:999px;background:var(--cs);color:var(--c);margin:0 4px 4px 0;font-style:normal}
+tr.site td{background:var(--oak-soft)}
+tr.site th{background:var(--oak-soft);color:var(--oak)}
+.emo td{padding:0}
+.emo svg{display:block;width:100%;height:90px}
+.legend{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:13px;color:var(--muted)}
+.blocks{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.blk{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 18px;display:grid;gap:8px;align-content:start}
+.blk .num{font-family:var(--display);font-size:22px;color:var(--oak);line-height:1}
+.blk p{font-size:14px}
+.blk .why{font-size:13px;color:var(--muted)}
+.note{font-size:14px;color:var(--muted);max-width:75ch;border-top:1px solid var(--line);padding-top:16px}
+.kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.kpi .box b{font-family:var(--display);font-size:18px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <span class="eyebrow">Customer Journey Map · мебель на заказ · Астана</span>
+  <h1>Путь клиента: от ключей до готовой кухни</h1>
+  <p class="lead">Карта построена по персоне и Мом-тесту. Это гипотеза: перед запуском рекламы проверьте её на 5–7 реальных клиентах. Нижняя строка карты сразу переводит каждый этап в блок сайта.</p>
+</header>
+
+<section class="persona">
+  <div class="box">
+    <h3>Айгерим, 34 года</h3>
+    <dl>
+      <dt>Объект</dt><dd>Новостройка, 3 комн., 78 м²</dd>
+      <dt>Семья</dt><dd>Муж, двое детей (7 и 3 года)</dd>
+      <dt>Запрос</dt><dd>Кухня + шкаф в прихожую</dd>
+      <dt>Бюджет</dt><dd>«до 2 млн», реально до 2,5 млн ₸</dd>
+      <dt>Решает</dt><dd>Выбирает она, деньги одобряет муж</dd>
+    </dl>
+  </div>
+  <div class="box pain p1"><span class="tag">Боль 1 · Сроки</span><p>Платит аренду 350 тыс. и ипотеку одновременно. Каждый месяц задержки стоит денег. Хочет въехать к Новому году.</p></div>
+  <div class="box pain p2"><span class="tag">Боль 2 · Недоверие</span><p>Частник сделал кухню, фасады у мойки вздулись, мастер пропал. Не верит обещаниям и красивым картинкам.</p></div>
+  <div class="box pain p3"><span class="tag">Боль 3 · Защитить выбор</span><p>Муж считает, что можно дешевле. Если что-то пойдёт не так, виновата будет она. Нужны аргументы для разговора дома.</p></div>
+</section>
+
+<section>
+  <h2>Карта пути</h2>
+  <div class="legend"><span>Листайте карту вбок →</span><span><span class="chip p1">Б1</span>сроки</span><span><span class="chip p2">Б2</span>недоверие</span><span><span class="chip p3">Б3</span>решение мужа</span></div>
+  <div class="scroller">
+  <table>
+    <thead><tr>
+      <th style="position:sticky;left:0;z-index:2;background:var(--sage-soft)">Этап</th>
+      <th><span class="n">Этап 1</span>Получила ключи</th>
+      <th><span class="n">Этап 2</span>Собирает идеи</th>
+      <th><span class="n">Этап 3</span>Ищет производителя</th>
+      <th><span class="n">Этап 4</span>Сравнивает цены</th>
+      <th><span class="n">Этап 5</span>Замер и 3D-проект</th>
+      <th><span class="n">Этап 6</span>Решение и договор</th>
+      <th><span class="n">Этап 7</span>Ждёт производства</th>
+      <th><span class="n">Этап 8</span>Доставка и монтаж</th>
+      <th><span class="n">Этап 9</span>Живёт с мебелью</th>
+    </tr></thead>
+    <tbody>
+      <tr><th>Цель клиента</th>
+        <td>Понять, сколько всего нужно и когда можно въехать</td>
+        <td>Определиться со стилем и цветом</td>
+        <td>Найти тех, кто сделает качественно и не пропадёт</td>
+        <td>Понять, за что разница в цене</td>
+        <td>Увидеть кухню до того, как платить</td>
+        <td>Получить гарантии и согласие мужа</td>
+        <td>Знать, что всё идёт по плану</td>
+        <td>Чтобы поставили аккуратно и в срок</td>
+        <td>Чтобы через год всё было как новое</td>
+      </tr>
+      <tr><th>Действия</th>
+        <td><ul><li>Смотрит черновую отделку</li><li>Муж меряет рулеткой</li><li>Считает бюджет на ремонт</li></ul></td>
+        <td><ul><li>Сохраняет фото в Pinterest</li><li>Смотрит Reels дизайнеров</li><li>Спрашивает у подруг</li></ul></td>
+        <td><ul><li>Ищет «кухни на заказ Астана» в Google и 2ГИС</li><li>Листает Instagram фабрик</li><li>Читает отзывы</li></ul></td>
+        <td><ul><li>Едет в 2–3 салона</li><li>Пишет в WhatsApp, просит цену</li><li>Пересылает расчёты мужу</li></ul></td>
+        <td><ul><li>Записывается на замер</li><li>Согласует время с мужем</li><li>Правит 3D-проект</li></ul></td>
+        <td><ul><li>Обсуждает дома</li><li>Читает договор</li><li>Вносит предоплату</li></ul></td>
+        <td><ul><li>Доделывает ремонт</li><li>Пишет менеджеру «как там?»</li><li>Платит аренду</li></ul></td>
+        <td><ul><li>Отпрашивается с работы</li><li>Принимает монтаж</li><li>Проверяет фасады и ящики</li></ul></td>
+        <td><ul><li>Пользуется каждый день</li><li>Показывает гостям</li><li>Отвечает подругам, где делали</li></ul></td>
+      </tr>
+      <tr><th>Точки контакта</th>
+        <td>Застройщик, чаты ЖК</td>
+        <td>Pinterest, Instagram, YouTube</td>
+        <td>Google, 2ГИС, Instagram, сайт</td>
+        <td>Шоурум, WhatsApp, сайт</td>
+        <td>Замерщик, дизайнер, WhatsApp</td>
+        <td>Менеджер, договор, Kaspi / банк</td>
+        <td>Менеджер, WhatsApp</td>
+        <td>Водитель, монтажники</td>
+        <td>Сервис, Instagram, 2ГИС отзывы</td>
+      </tr>
+      <tr><th>Мысли</th>
+        <td class="q">«Кухня нужна в первую очередь, без неё не въедешь»</td>
+        <td class="q">«Хочу как на картинке, но это, наверное, дорого»</td>
+        <td class="q">«Как понять, что это не перекупщик и не частник?»</td>
+        <td class="q">«Почему у одних 2 млн, а у других вдвое дешевле?»</td>
+        <td class="q">«Муж должен сам всё увидеть и спросить»</td>
+        <td class="q">«А если сорвут срок? А если опять вздуется?»</td>
+        <td class="q">«Опять тишина. Может, забыли про нас?»</td>
+        <td class="q">«Только бы не поцарапали и не напортачили»</td>
+        <td class="q">«Не зря переплатили, мужу не стыдно показать»</td>
+      </tr>
+      <tr class="emo"><th style="padding:10px 12px">Эмоции</th>
+        <td colspan="9">
+          <svg viewBox="0 0 900 90" preserveAspectRatio="none" aria-label="Кривая эмоций по этапам">
+            <line x1="0" y1="45" x2="900" y2="45" stroke="var(--line)" stroke-dasharray="4 4"/>
+            <polyline fill="none" stroke="var(--oak)" stroke-width="3" vector-effect="non-scaling-stroke"
+              points="50,30 150,12 250,55 350,78 450,30 550,60 650,80 750,35 850,12"/>
+            <g fill="var(--oak)">
+              <circle cx="50" cy="30" r="5"/><circle cx="150" cy="12" r="5"/><circle cx="250" cy="55" r="5"/><circle cx="350" cy="78" r="5"/><circle cx="450" cy="30" r="5"/><circle cx="550" cy="60" r="5"/><circle cx="650" cy="80" r="5"/><circle cx="750" cy="35" r="5"/><circle cx="850" cy="12" r="5"/>
+            </g>
+          </svg>
+        </td>
+      </tr>
+      <tr><th>Боли</th>
+        <td><span class="chip p1">Б1</span>Двойные платежи, давит срок</td>
+        <td>Боится, что мечта не влезет в бюджет</td>
+        <td><span class="chip p2">Б2</span>Не отличить фабрику от частника</td>
+        <td><span class="chip p3">Б3</span>Муж: «в магазине дешевле»<br><span class="chip p2">Б2</span>Цены без разбивки</td>
+        <td><span class="chip p3">Б3</span>Муж работает, свободен только в субботу</td>
+        <td><span class="chip p1">Б1</span>Срок на словах<br><span class="chip p2">Б2</span>Страх предоплаты</td>
+        <td><span class="chip p1">Б1</span>Неизвестность, каждый месяц аренды</td>
+        <td><span class="chip p2">Б2</span>Боится брака и грязи</td>
+        <td><span class="chip p2">Б2</span>Помнит, как пропал прошлый мастер</td>
+      </tr>
+      <tr class="site"><th>Что дать на сайте</th>
+        <td>Блок «Въезжайте к Новому году»: срок от замера до монтажа, поэтапная установка</td>
+        <td>Галерея работ по стилям, у каждой цена «от» и срок</td>
+        <td>Видео цеха, площадь производства, бренды материалов, адрес шоурума</td>
+        <td>Пример сметы по позициям, сравнение «на заказ vs готовая»</td>
+        <td>Запись на замер с выбором дня, суббота отдельной кнопкой</td>
+        <td>Что в договоре: срок, неустойка, гарантия, этапы оплаты</td>
+        <td>Как держим в курсе: фото этапов в WhatsApp</td>
+        <td>Как проходит монтаж: чек-лист сдачи, уборка после себя</td>
+        <td>Отзывы с фото через 1–2 года, гарантийный сервис</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section>
+  <h2>Структура сайта по CJM</h2>
+  <p class="lead">Порядок блоков повторяет путь клиента. Каждый блок закрывает конкретную боль, поэтому ни один не стоит выкидывать ради красоты.</p>
+  <div class="blocks">
+    <div class="blk"><span class="num">1</span><h3>Первый экран</h3><p>«Кухни и шкафы на заказ в Астане. От замера до монтажа за N дней, срок в договоре». Кнопка «Записаться на замер».</p><span class="why"><span class="chip p1">Б1</span>Сразу отвечает на главный вопрос о сроке</span></div>
+    <div class="blk"><span class="num">2</span><h3>Наши работы</h3><p>Фото по стилям: светлые, с деревом, без ручек. Под каждой работой ЖК, цена «от» и срок изготовления.</p><span class="why">Этап 2: попадает в её картинки из Pinterest</span></div>
+    <div class="blk"><span class="num">3</span><h3>Своё производство</h3><p>Видео цеха 30–60 сек, площадь, материалы и фурнитура, приглашение на экскурсию.</p><span class="why"><span class="chip p2">Б2</span>Отличает фабрику от частника и перекупщика</span></div>
+    <div class="blk"><span class="num">4</span><h3>Из чего складывается цена</h3><p>Пример сметы кухни по позициям и честное сравнение с готовой мебелью из магазина.</p><span class="why"><span class="chip p3">Б3</span>Готовый аргумент, который можно переслать мужу</span></div>
+    <div class="blk"><span class="num">5</span><h3>Как мы работаем</h3><p>Замер → 3D-проект → договор → производство → монтаж. У каждого шага срок в днях.</p><span class="why"><span class="chip p1">Б1</span><span class="chip p2">Б2</span>Предсказуемость вместо «не переживайте»</span></div>
+    <div class="blk"><span class="num">6</span><h3>Гарантии в договоре</h3><p>Срок с неустойкой, гарантия на фасады и фурнитуру, этапы оплаты, один менеджер на весь заказ.</p><span class="why"><span class="chip p2">Б2</span>Страх предоплаты и пропавшего мастера</span></div>
+    <div class="blk"><span class="num">7</span><h3>Отзывы</h3><p>Видео и фото от клиентов, лучше через год после установки. Особенно зона мойки.</p><span class="why"><span class="chip p2">Б2</span>Доказательство, что через год всё в порядке</span></div>
+    <div class="blk"><span class="num">8</span><h3>Форма заявки</h3><p>3 поля: имя, телефон, что нужно (кухня / шкаф / комплект). Выбор дня замера, отметка «приедем, когда дома вся семья».</p><span class="why"><span class="chip p3">Б3</span>Решение принимают вдвоём</span></div>
+    <div class="blk"><span class="num">9</span><h3>Контакты</h3><p>Адрес шоурума, часы работы, WhatsApp, ссылка на 2ГИС.</p><span class="why">Этап 4: ей удобнее написать, чем звонить</span></div>
+  </div>
+</section>
+
+<section>
+  <h2>Что измерять после запуска</h2>
+  <div class="kpi">
+    <div class="box"><b>Заявки на замер</b><p>Конверсия сайта в заявку. Главная цифра.</p></div>
+    <div class="box"><b>Замер → договор</b><p>Показывает, сработали ли смета и гарантии.</p></div>
+    <div class="box"><b>Откуда пришли</b><p>Instagram, 2ГИС, Google. Куда вкладывать рекламу.</p></div>
+    <div class="box"><b>Просмотры видео цеха</b><p>Если смотрят до конца, блок доверия работает.</p></div>
+  </div>
+  <p class="note">Цифры сроков (N дней) и условия договора подставьте реальные. Не обещайте на сайте того, чего цех не держит: при первой сорванной дате боль 2 вернётся вдвойне.</p>
+</section>
+</div>
+</body>
+</html>
